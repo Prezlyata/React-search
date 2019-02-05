@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
+import photos from './data/photos.json';
 
 const API_URL =
-	'https://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=6e7e169c9890dd483c8b55ec4a4336e5&gallery_id=66911286-72157647277042064&format=json&nojsoncallback=1&auth_token=72157703070794842-6c1ce4456a587370&api_sig=13d0a05385a8ab8e4fc85a253166530c';
+	'https://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=9a0c761a0f9917ec4fdf98588e5d8de8&gallery_id=66911286-72157647277042064&format=json&nojsoncallback=1&auth_token=72157706407148935-479b53704d59b1e2&api_sig=08fbc227be3a17b8551abb6ff033a5f0';
 
 class App extends Component {
 	constructor(props) {
@@ -14,7 +15,8 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		this.getPhotos();
+		// this.getPhotos();
+		this.setPhotos();
 	}
 
 	getPhotos = () => {
@@ -25,6 +27,9 @@ class App extends Component {
 			.then((data) => {
 				this.setState({ initialPhotos: data.photos.photo, photos: data.photos.photo });
 			});
+	};
+	setPhotos = () => {
+		this.setState({ initialPhotos: photos.photos.photo, photos: photos.photos.photo });
 	};
 
 	filterPhotos = (e) => {
